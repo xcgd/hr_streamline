@@ -22,10 +22,9 @@ class hr_employee_streamline(osv.osv):
     def _update_values(self, values):
         if not 'signature' in values:
             return
-        # fake file obj
-        file_like = StringIO(b64decode(values['signature']))
         # load image and get its format
         try:
+            file_like = StringIO(b64decode(values['signature']))
             format_ = Image.open(file_like).format.lower()
         # oops
         except Exception, e:
