@@ -4,11 +4,10 @@ from cStringIO import StringIO
 from PIL import Image
 
 import openerp
+from openerp.tools.translate import _
 
 from osv import fields
 from osv import osv
-
-from tools.translate import _
 
 
 class hr_employee_streamline(osv.osv):
