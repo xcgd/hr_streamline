@@ -22,6 +22,11 @@ class hr_employee_streamline(osv.osv):
     def _update_values(self, values):
         if not 'signature' in values:
             return
+        # invalidate signature and type
+        if not values['signature']:
+            values['signature'] = False
+            values['signature_type'] = False
+            return # quit
         # load image and get its format
         try:
             file_like = StringIO(b64decode(values['signature']))

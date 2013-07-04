@@ -82,3 +82,19 @@ class TestHrStreamline(TransactionCase):
                             'Invalid Image',
                             self._employee.write,
                             cr, uid, employee_ids, values)
+
+    def test_write_image_invalidate(self):
+        # shortcut
+        cr, uid = self.cr, self.uid
+        # get an employee
+        employee_ids = self._employee.search(cr, uid, [
+            ('name', '=', 'florent'),
+        ])
+        # write should be ok
+        res = self._employee.write(cr, uid, employee_ids, {
+            'signature': False,
+        })
+        self.assertTrue(res)
+        # signature type should have been cleared
+        employee = self._employee.browse(cr, uid, employee_ids[0])
+        self.assertFalse(employee.signature_type)
