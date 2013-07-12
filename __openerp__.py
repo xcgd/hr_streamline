@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Human Employee Streamline',
-    'version': '0.1',
+    'version': '1.0',
+    'author': 'XCG Consulting',
     'category': 'Human Resources',
-    'description': """
-""",
-    'author': 'Florent Pigout <florent.pigout@gmail.com>',
-    'maintainer': 'Florent Pigout <florent.pigout@gmail.com>',
-    'website': 'http://www.xcg-consulting.fr/fr/services/openerp',
+    'description': """ enchancements to the hr module to streamline its usage""",
+    'website': 'http://www.openerp-experts.com',
     'depends': [
         'base',
         'hr',
