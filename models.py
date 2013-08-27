@@ -60,8 +60,49 @@ class hr_employee_streamline(osv.osv):
         # keep the signature image format
         values['signature_type'] = format_
 
+    def find_employees_by_category(
+            self, cr, uid, cat_name,
+            parent_cat_name=None, context=None,
+            browse=False):
+        """Find employees wich are tagged
+        with a category whose name is cat_name.
+        If parent_cat_name is specified, the category
+        must be a child of the category whose name is parent_cat_name.
+        Return a list of employee ids
+        or a list of browse objects if browse is True.
+        Return an empty list if no employee or
+        no filtering categories matches the given criteria.
 
+        :param cat_name: category name of the eemployee
+        :param parent_cat_name: parent category name
+        """
+        category_osv = self.pool.get("hr.employee.category")
+        employee_osv = self.pool.get("hr.employee")
 
+        search_arg = [('name', '=', cat_name)]
+        if parent_cat_name is not None:
+            parent_ids = category_osv.search(
+                cr, uid, [('name', '=', parent_cat_name)],
+                limit=1, context=context)
+            search_arg.append(('parent_id', 'child_of', parent_ids))
+        cat_ids = category_osv.search(cr, uid, search_arg,
+                                      limit=1, context=context)
+        if not cat_ids:
+            return cat_ids
+        search_arg = [('category_ids', 'child_of', [cat_ids])]
+        employee_ids = employee_osv.search(
+            cr, uid,
+            search_arg,
+            context=context
+        )
+        if browse and employee_ids:
+            return employee_osv.browse(
+                cr, uid,
+                employee_ids,
+                context=context
+            )
+        return employee_ids
+        
     def create(self, cr, uid, values, context=None):
         self._update_values(values)
         return super(hr_employee_streamline, self).create(cr, uid, values,
