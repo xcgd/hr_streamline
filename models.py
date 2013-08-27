@@ -20,7 +20,7 @@ class hr_employee_streamline(osv.osv):
         if no manager is found
         """
         res = dict()
-        for employee in self.browse(cr, uid, ids,context=context):
+        for employee in self.browse(cr, uid, ids, context=context):
             if employee.department_id:
                 manager = employee.department_id.manager_id
             else:
@@ -28,9 +28,9 @@ class hr_employee_streamline(osv.osv):
             res[employee.id] = manager
         return res
 
-    _columns ={
-        'signature' : fields.binary(_('Signature')),
-        'signature_type' : fields.char(_('Signature Type (.png, jpg, ..)')),
+    _columns = {
+        'signature': fields.binary(_('Signature')),
+        'signature_type': fields.char(_('Signature Type (.png, jpg, ..)')),
         'manager_id': fields.function(
             _get_managers,
             method=True,
@@ -47,13 +47,13 @@ class hr_employee_streamline(osv.osv):
         if not values['signature']:
             values['signature'] = False
             values['signature_type'] = False
-            return # quit
+            return  # quit
         # load image and get its format
         try:
             file_like = StringIO(b64decode(values['signature']))
             format_ = Image.open(file_like).format.lower()
         # oops
-        except Exception, e:
+        except Exception:
             raise osv.except_osv(
                 _('Invalid Image'),
                 _('Image can not be loaded!'))
@@ -102,7 +102,7 @@ class hr_employee_streamline(osv.osv):
                 context=context
             )
         return employee_ids
-        
+
     def create(self, cr, uid, values, context=None):
         self._update_values(values)
         return super(hr_employee_streamline, self).create(cr, uid, values,
