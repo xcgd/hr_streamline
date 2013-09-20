@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <page string="HR Settings" position="after">
-                    <page string="Signature">
+                    <page string="Signature"  groups="base.group_hr_user">
                         <field name="signature" widget='image' class="oe_left"/>
                     </page>
                 </page>
