@@ -28,11 +28,31 @@ class hr_employee_streamline(osv.osv):
             res[employee.id] = manager
         return res
 
+    def _search_managers(self, cr, uid, obj, name, args, context):
+        ids = set()
+        for cond in args:
+            _id = cond[2]
+            if cond[1] == '=':
+                req = (
+                    'SELECT hr_employee.id '
+                    'FROM hr_employee '
+                    'JOIN hr_department ON '
+                    'hr_employee.department_id=hr_department.id '
+                    'WHERE hr_department.manager_id = %s' % _id)
+                cr.execute(req)
+        r = cr.fetchall()
+        for x in r:
+            ids.add(x[0])
+        if ids:
+            return [('id', 'in', tuple(ids))]
+        return [('id', '=', '0')]
+
     _columns = {
         'signature': fields.binary(_('Signature')),
         'signature_type': fields.char(_('Signature Type (.png, jpg, ..)')),
         'manager_id': fields.function(
             _get_managers,
+            fnct_search=_search_managers,
             method=True,
             string="Manager",
             type='many2one',
