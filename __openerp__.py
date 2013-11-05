@@ -12,7 +12,7 @@
     ],
      'data': [
         'admin_doc.xml',
-        'view/hr_streamline.xml',
+        'hr_employee.xml',
         'security/ir.model.access.csv',
     ],
     'test': [

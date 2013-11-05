@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 import admin_doc
-import models
+import hr_employee
