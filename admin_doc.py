@@ -46,6 +46,15 @@ class admin_doc(osv.Model):
 
         return super(admin_doc, self).create(cr, uid, vals, context=context)
 
+    def write(self, cr, uid, ids, vals, context=None):
+        """Fill the "name" from the original filename."""
+
+        if 'datas_fname' in vals:
+            vals['name'] = vals['datas_fname']
+
+        return super(admin_doc, self).write(cr, uid, ids, vals,
+                                            context=context)
+
     def unlink(self, cr, uid, ids, context=None):
         """Delete the attachment associated with records being deleted."""
 
