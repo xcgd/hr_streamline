@@ -58,6 +58,10 @@ class hr_employee_streamline(osv.osv):
             type='many2one',
             obj='hr.employee',
             store=False),
+
+        'admin_doc_ids': fields.one2many('admin_doc',
+                                         'employee_id',
+                                         _('Administrative documents')),
     }
 
     def _update_values(self, values):

@@ -11,8 +11,9 @@
         'hr',
     ],
      'data': [
-        'security/ir.model.access.csv',
+        'admin_doc.xml',
         'view/hr_streamline.xml',
+        'security/ir.model.access.csv',
     ],
     'test': [
     ],
