@@ -7,7 +7,7 @@ class admin_doc_type(osv.Model):
     _name = 'admin_doc_type'
 
     _columns = {
-        'name': fields.char('Description', size=256),
+        'name': fields.char('Description', size=256, required=True),
     }
 
 
