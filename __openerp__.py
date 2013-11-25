@@ -12,6 +12,7 @@
     ],
      'data': [
         'security/ir.model.access.csv',
+        'security/record_rules.xml',
         'admin_doc.xml',
         'hr_employee.xml',
     ],
