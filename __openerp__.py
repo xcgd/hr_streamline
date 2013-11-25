@@ -11,9 +11,9 @@
         'hr',
     ],
      'data': [
+        'security/ir.model.access.csv',
         'admin_doc.xml',
         'hr_employee.xml',
-        'security/ir.model.access.csv',
     ],
     'test': [
     ],
