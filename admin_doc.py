@@ -4,7 +4,7 @@ from openerp.osv import fields, osv
 class admin_doc_type(osv.Model):
     """Kind of an administrative document employees have to provide."""
 
-    _name = 'admin_doc_type'
+    _name = 'admin_doc.type'
 
     _columns = {
         'name': fields.char('Description', size=256, required=True),
@@ -23,7 +23,7 @@ class admin_doc(osv.Model):
     }
 
     _columns = {
-        'type_id': fields.many2one('admin_doc_type',
+        'type_id': fields.many2one('admin_doc.type',
                                    'Type',
                                    required=True),
         'employee_id': fields.many2one('hr.employee',

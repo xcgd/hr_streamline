@@ -6,7 +6,7 @@
 
         <record id="admin_doc_type_tree_view" model="ir.ui.view">
             <field name="name">admin_doc_type_tree_view</field>
-            <field name="model">admin_doc_type</field>
+            <field name="model">admin_doc.type</field>
             <field name="arch" type="xml">
 
                 <tree string="Administrative document types" version="7.0">
@@ -18,7 +18,7 @@
 
         <record id="admin_doc_type_form_view" model="ir.ui.view">
             <field name="name">admin_doc_type_form_view</field>
-            <field name="model">admin_doc_type</field>
+            <field name="model">admin_doc.type</field>
             <field name="arch" type="xml">
 
                 <form string="Administrative document types" version="7.0">
@@ -81,7 +81,7 @@
 
         <record id="admin_doc_type_action" model="ir.actions.act_window">
             <field name="name">Administrative documents</field>
-            <field name="res_model">admin_doc_type</field>
+            <field name="res_model">admin_doc.type</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
