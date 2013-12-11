@@ -78,10 +78,13 @@ class TestHrStreamline(TransactionCase):
             'signature': 'dummy_text_for_signaturebad_content',
         }
         # write should failed
-        self.assertRaisesRegexp(osv.except_osv,
-                            'Invalid Image',
-                            self._employee.write,
-                            cr, uid, employee_ids, values)
+        self.assertRaisesRegexp(
+            osv.except_osv,
+            'Invalid Image',
+            self._employee.write,
+            cr, uid, employee_ids,
+            values
+        )
 
     def test_write_image_invalidate(self):
         # shortcut
