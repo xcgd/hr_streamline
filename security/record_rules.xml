@@ -6,11 +6,20 @@
             employees' admin docs. Disable it by adding a record rule that applies to every attachment, 
             except for those employee-related. -->
 
-        <record model="ir.rule" id="employee_attachment_rule">
-            <field name="name">Employee attachments</field>
+        <record model="ir.rule" id="employee_attachment_rule_users">
+            <field name="name">Employee attachments (users)</field>
             <field name="model_id" ref="base.model_ir_attachment" />
             <field name="domain_force">[('res_model','!=','hr.employee')]</field>
             <field name="groups" eval="[(4,ref('base.group_user'))]" />
+        </record>
+
+        <!-- Add the reverse rule to give HR officers access to admin docs. -->
+
+        <record model="ir.rule" id="employee_attachment_rule_officers">
+            <field name="name">Employee attachments (officers)</field>
+            <field name="model_id" ref="base.model_ir_attachment" />
+            <field name="domain_force">[('res_model','=','hr.employee')]</field>
+            <field name="groups" eval="[(4,ref('base.group_hr_user'))]" />
         </record>
 
     </data>
