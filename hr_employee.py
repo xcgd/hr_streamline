@@ -59,9 +59,12 @@ class hr_employee_streamline(osv.osv):
             obj='hr.employee',
             store=False),
 
-        'admin_doc_ids': fields.one2many('admin_doc',
-                                         'employee_id',
-                                         _('Administrative documents')),
+        'admin_doc_ids': fields.many2many(
+            'admin_doc', 'admin_doc_rel_',
+            'res_id', 'doc_id',
+            _('Administrative documents'),
+            ondelete="cascade",
+        ),
     }
 
     def _update_values(self, values):
