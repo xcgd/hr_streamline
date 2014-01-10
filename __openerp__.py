@@ -12,6 +12,7 @@
         'base',
         'hr',
         'hr_contract',
+        'document_attachment',
     ],
     'data': [
         'security/ir.model.access.csv',
