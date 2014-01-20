@@ -60,9 +60,9 @@ class hr_employee_streamline(osv.osv):
             store=False),
 
         'admin_doc_ids': fields.many2many(
-            'admin_doc', 'admin_doc_rel_',
+            'document_attachment', 'admin_doc_rel_',
             'res_id', 'doc_id',
-            _('Administrative documents'),
+            'Administrative documents',
             ondelete="cascade",
         ),
     }

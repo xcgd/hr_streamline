@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_admin_doc_user,admin_doc_user,model_admin_doc,base.group_user,1,0,0,0
-access_admin_doc_officer,admin_doc_officer,model_admin_doc,base.group_hr_user,1,1,1,1
-access_admin_doc_type_user,admin_doc_type_user,model_admin_doc_type,base.group_user,1,0,0,0
-access_admin_doc_type_officer,admin_doc_type_officer,model_admin_doc_type,base.group_hr_user,1,1,1,1
+access_document_attachment_user,document_attachment_user,document_attachment.model_document_attachment,base.group_user,1,0,0,0
+access_document_attachment_officer,document_attachment_officer,document_attachment.model_document_attachment,base.group_hr_user,1,1,1,1
+access_document_attachment_type_user,document_attachment_type_user,document_attachment.model_document_attachment_type,base.group_user,1,0,0,0
+access_document_attachment_type_officer,document_attachment_type_officer,document_attachment.model_document_attachment_type,base.group_hr_user,1,1,1,1
 access_hr_streamline_contract_user,hr_streamline_contract_user,hr_contract.model_hr_contract,base.group_user,1,0,0,0
