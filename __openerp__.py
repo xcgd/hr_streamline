@@ -11,7 +11,6 @@
     'depends': [
         'base',
         'hr',
-        'hr_contract',
         'document_attachment',
     ],
     'data': [

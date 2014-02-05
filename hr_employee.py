@@ -3,14 +3,11 @@ from base64 import b64decode
 from cStringIO import StringIO
 from PIL import Image
 
-import openerp
+from openerp.osv import osv, fields
 from openerp.tools.translate import _
 
-from osv import fields
-from osv import osv
 
-
-class hr_employee_streamline(osv.osv):
+class hr_employee_streamline(osv.Model):
 
     _inherit = 'hr.employee'
 
@@ -24,7 +21,7 @@ class hr_employee_streamline(osv.osv):
             if employee.department_id:
                 manager = employee.department_id.manager_id
             else:
-                manager = openerp.osv.orm.browse_null()
+                manager = osv.orm.browse_null()
             res[employee.id] = manager
         return res
 
