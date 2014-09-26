@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Human Employee Streamline',
-    'version': '1.4.1',
+    'version': '1.5',
     'author': 'XCG Consulting',
     'category': 'Human Resources',
     'description': """ enchancements to the hr module to
