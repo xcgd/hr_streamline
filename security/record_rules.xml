@@ -2,9 +2,9 @@
 <openerp>
     <data noupdate="0">
 
-        <!-- The "Administrative documents" feature gives any user access to other 
-            employees' admin docs. Disable it by adding a record rule that applies to every attachment, 
-            except for those employee-related. -->
+        <!-- The "Administrative documents" feature gives any user access to other
+            employees' admin docs. Disable it by adding a record rule that applies
+            to every attachment, except for those employee-related. -->
 
         <record model="ir.rule" id="employee_attachment_rule_users">
             <field name="name">Employee attachments (users)</field>
@@ -20,6 +20,18 @@
             <field name="model_id" ref="base.model_ir_attachment" />
             <field name="domain_force">[('res_model','=','hr.employee')]</field>
             <field name="groups" eval="[(4,ref('base.group_hr_user'))]" />
+        </record>
+
+        <!-- Give users access to departments of all their companies instead of only
+            that of the currently selected company. -->
+        <record id="hr.hr_dept_comp_rule" model="ir.rule">
+            <field name="domain_force"><![CDATA[
+                [
+                    '|',
+                        ('company_id', '=', False),
+                        ('company_id.user_ids', 'in', user.id),
+                ]
+            ]]></field>
         </record>
 
     </data>
