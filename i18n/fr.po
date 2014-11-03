@@ -1,0 +1,120 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* hr_streamline
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-03 14:37+0000\n"
+"PO-Revision-Date: 2014-11-03 15:44+0100\n"
+"Last-Translator: Houzéfa Abbasbhay <houzefa.abba@xcg-consulting.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: hr_streamline
+#: field:hr.operational_department,company_id:0
+msgid "Department company"
+msgstr "Société du département"
+
+#. module: hr_streamline
+#: view:hr.employee:0 field:hr.employee,admin_doc_ids:0
+#: model:ir.actions.act_window,name:hr_streamline.admin_doc_type_action
+#: model:ir.ui.menu,name:hr_streamline.admin_doc_type_menu
+msgid "Administrative documents"
+msgstr "Documents administratifs"
+
+#. module: hr_streamline
+#: code:addons/hr_streamline/model/hr_employee.py:49
+#: field:hr.employee,signature_type:0
+#, python-format
+msgid "Signature Type (.png, jpg, ..)"
+msgstr "Type de la signature (.png, jpg, ..)"
+
+#. module: hr_streamline
+#: code:addons/hr_streamline/model/hr_employee.py:92
+#, python-format
+msgid "Image can not be loaded!"
+msgstr "L'image ne peut pas être chargée !"
+
+#. module: hr_streamline
+#: code:addons/hr_streamline/model/hr_operational_department.py:59
+#: sql_constraint:hr.operational_department:0
+#, python-format
+msgid "The department is already in the list."
+msgstr "Le département est déjà dans la liste."
+
+#. module: hr_streamline
+#: field:hr.operational_department,priority:0
+msgid "Priority"
+msgstr "Priorité"
+
+#. module: hr_streamline
+#: model:ir.model,name:hr_streamline.model_hr_operational_department
+msgid "hr.operational_department"
+msgstr "hr.operational_department"
+
+#. module: hr_streamline
+#: code:addons/hr_streamline/model/hr_employee.py:91
+#, python-format
+msgid "Invalid Image"
+msgstr "Image invalide"
+
+#. module: hr_streamline
+#: view:hr.operational_department:0
+msgid "Operational department"
+msgstr "Département opérationnel"
+
+#. module: hr_streamline
+#: field:hr.operational_department,employee_id:0
+#: model:ir.model,name:hr_streamline.model_hr_employee
+msgid "Employee"
+msgstr "Employé"
+
+#. module: hr_streamline
+#: field:hr.employee,manager_id:0
+msgid "Manager"
+msgstr "Responsable"
+
+#. module: hr_streamline
+#: help:hr.operational_department,priority:0
+msgid ""
+"Number used to sort operational department lists. The lowest priority is the "
+"most important."
+msgstr ""
+"Nombre utilisé pour trier la liste des départements opérationnels. La "
+"priorité la plus basse est la plus importante."
+
+#. module: hr_streamline
+#: view:hr.employee:0 field:hr.employee,operational_department_ids:0
+#: view:hr.operational_department:0
+msgid "Operational departments"
+msgstr "Départements opérationnels"
+
+#. module: hr_streamline
+#: code:addons/hr_streamline/model/hr_employee.py:48 view:hr.employee:0
+#: field:hr.employee,signature:0
+#, python-format
+msgid "Signature"
+msgstr "Signature"
+
+#. module: hr_streamline
+#: field:hr.operational_department,department_id:0
+msgid "Department"
+msgstr "Département"
+
+#. module: hr_streamline
+#: help:hr.employee,operational_department_ids:0
+msgid "Departments (in any company) the employee gets to work for."
+msgstr ""
+"Les départements (peu importe la société) dans lesquels l'employé est amené "
+"à travailler."
+
+#. module: hr_streamline
+#: model:ir.model,name:hr_streamline.model_res_users
+msgid "Users"
+msgstr "Utilisateurs"
