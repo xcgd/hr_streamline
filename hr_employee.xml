@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
 
-                <page string="HR Settings" position="after">
+                <xpath expr="//page[@string='HR Settings']" position="after">
 
                     <!-- Add a "Signature" page. -->
 
@@ -19,10 +19,11 @@
                     <!-- Add an "Administrative documents" page. -->
 
                     <page string="Administrative documents" groups="base.group_hr_user">
-                        <field name="admin_doc_ids" context="{'res_model': 'hr.employee', 'res_id': id}"/>
+                        <field name="admin_doc_ids"
+                            context="{'res_model': 'hr.employee', 'res_id': id}" />
                     </page>
 
-                </page>
+                </xpath>
 
             </field>
         </record>
