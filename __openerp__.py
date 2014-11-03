@@ -16,8 +16,8 @@
     'data': [
         'security/ir.model.access.csv',
         'security/record_rules.xml',
-        'hr_employee.xml',
-        'hr_operational_department.xml',
+        'views/hr_employee.xml',
+        'views/hr_operational_department.xml',
         'menu.xml',
     ],
     'test': [
