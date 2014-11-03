@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Views for the hr.operational_department model. -->
+
+        <record id="hr_operational_department_list_view" model="ir.ui.view">
+            <field name="name">hr_operational_department_list_view</field>
+            <field name="model">hr.operational_department</field>
+            <field name="arch" type="xml">
+                <tree string="Operational departments">
+                    <field name="department_id" />
+                    <field name="company_id" groups="base.group_multi_company" />
+                    <field name="priority" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_operational_department_form_view" model="ir.ui.view">
+            <field name="name">hr_operational_department_form_view</field>
+            <field name="model">hr.operational_department</field>
+            <field name="arch" type="xml">
+                <form string="Operational department" version="7.0">
+                    <group>
+                        <field name="department_id" />
+                        <field name="company_id" groups="base.group_multi_company" />
+                        <field name="priority" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

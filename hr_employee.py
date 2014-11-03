@@ -56,6 +56,15 @@ class hr_employee_streamline(osv.Model):
             obj='hr.employee',
             store=False),
 
+        'operational_department_ids': fields.one2many(
+            'hr.operational_department',
+            'employee_id',
+            u"Operational departments",
+            help=(
+                u"Departments (in any company) the employee gets to work for."
+            ),
+        ),
+
         'admin_doc_ids': fields.many2many(
             'document_attachment', 'admin_doc_rel_',
             'res_id', 'doc_id',

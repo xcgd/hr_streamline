@@ -8,6 +8,13 @@
             <field name="inherit_id" ref="hr.view_employee_form" />
             <field name="arch" type="xml">
 
+                <xpath expr="//page[@string='HR Settings']" position="inside">
+                    <group string="Operational departments">
+                        <field name="operational_department_ids" nolabel="1"
+                            colspan="2" />
+                    </group>
+                </xpath>
+
                 <xpath expr="//page[@string='HR Settings']" position="after">
 
                     <!-- Add a "Signature" page. -->
