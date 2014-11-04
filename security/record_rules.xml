@@ -41,13 +41,15 @@
             <field name="domain_force"><![CDATA[
                 [
                     '|',
-                        ('company_id', '=', False),
-                        ('company_id', '=', user.company_id.id),
+                        ('department_id.company_id', '=', False),
+                        ('department_id.company_id.user_ids', 'in', user.id),
                 ]
             ]]></field>
             <field name="global" eval="True" />
             <field name="model_id" ref="model_hr_operational_department" />
             <field name="name">Operational departments - multi-company</field>
+            <!-- Everyone is able to see the operational department of an employee they can read -->
+            <field name="perm_read" eval="0" />
         </record>
 
     </data>
