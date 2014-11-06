@@ -1,3 +1,4 @@
+from openerp import SUPERUSER_ID
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
 
@@ -67,9 +68,15 @@ class hr_operational_department(osv.Model):
             ids = [ids]
         context = default_context(self, cr, uid, context)
 
-        op_deps = self.browse(cr, uid, ids, context=context)
+        op_deps = self.browse(cr, SUPERUSER_ID, ids, context=context)
         return [
-            (op_dep.id, op_dep.department_id.name)
+            (
+                op_dep.id,
+                u"%s (%s)" % (
+                    op_dep.department_id.name,
+                    op_dep.department_id.company_id.name,
+                )
+            )
             for op_dep in op_deps
         ]
 
@@ -87,8 +94,12 @@ class hr_operational_department(osv.Model):
             )
 
         ids = self.search(
-            cr, uid,
-            [('department_id.name', operator, name)] + args,
+            cr, SUPERUSER_ID,
+            [
+                '|',
+                ('department_id.company_id.name', operator, name),
+                ('department_id.name', operator, name),
+            ] + args,
             limit=limit,
             context=context
         )
