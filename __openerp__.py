@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Human Employee Streamline',
-    'version': '1.5.3',
+    'version': '1.5.3-dev',
     'author': 'XCG Consulting',
     'category': 'Human Resources',
-    'description': """ enchancements to the hr module to
+    'description': """Enchancements to the hr module to
     streamline its usage
     """,
     'website': 'http://www.openerp-experts.com',
@@ -19,6 +19,9 @@
         'views/hr_employee.xml',
         'views/hr_operational_department.xml',
         'menu.xml',
+    ],
+    'demo': [
+        'demo/hr.operational_department.csv',
     ],
     'test': [
     ],
