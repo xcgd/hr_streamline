@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Human Employee Streamline',
-    'version': '1.5.3-dev',
+    'version': '1.6',
     'author': 'XCG Consulting',
     'category': 'Human Resources',
     'description': """Enchancements to the hr module to
     streamline its usage
     """,
-    'website': 'http://www.openerp-experts.com',
+    'website': 'http://odoo.consulting/',
     'depends': [
         'base',
         'hr',
