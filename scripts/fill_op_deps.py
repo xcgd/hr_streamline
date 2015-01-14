@@ -5,11 +5,12 @@ employee.
 """
 
 import xmlrpclib
+import sys
 
 # DB Connection, modify these params to aim the correct database
 
-HOST = 'localhost'
-PORT = 8169
+HOST = 'openerp-dev'
+PORT = 8069
 USER = 'admin'
 PASS = 'a'
 DB = 'elias_copy'
@@ -51,6 +52,8 @@ for employee_id, department_id in emp_deps.iteritems():
 
     counter += 1
     if counter % 20 == 0:
-        print('Processed %d employees' % counter)
+        sys.stdout.write('\rCreated %d operational department' % counter)
+        sys.stdout.flush()
 
+print('\rCreated %d operational department' % counter)
 print('Done.')
