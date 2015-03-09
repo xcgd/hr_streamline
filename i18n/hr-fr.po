@@ -1,0 +1,5 @@
+#. module: hr
+#: field:hr.employee,gender:0
+msgid "Gender"
+msgstr "Sexe"
+

@@ -118,3 +118,9 @@ msgstr ""
 #: model:ir.model,name:hr_streamline.model_res_users
 msgid "Users"
 msgstr "Utilisateurs"
+
+#. module: hr
+#: field:hr.employee,gender:0
+msgid "Gender"
+msgstr "Sexe"
+
