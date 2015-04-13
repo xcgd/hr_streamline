@@ -4,6 +4,8 @@ def default_context(obj, cr, uid, context):
 
     if context is None:
         context = {}
+    else:
+        context = context.copy()
 
     user_obj = obj.pool['res.users']
 
