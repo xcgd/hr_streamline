@@ -74,7 +74,7 @@ class hr_employee_streamline(osv.Model):
     }
 
     def _update_values(self, values):
-        if not 'signature' in values:
+        if 'signature' not in values:
             return
         # invalidate signature and type
         if not values['signature']:

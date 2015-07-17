@@ -20,7 +20,6 @@
 ##############################################################################
 
 from openerp.osv import osv, fields
-from openerp.tools.translate import _
 
 
 class res_users(osv.Model):
@@ -45,7 +44,7 @@ class res_users(osv.Model):
         return result
 
     _columns = {
-        'employee_id': fields.function(_get_employee_id, 
-                                       type='many2one', 
+        'employee_id': fields.function(_get_employee_id,
+                                       type='many2one',
                                        obj="hr.employee"),
     }

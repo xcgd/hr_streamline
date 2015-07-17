@@ -30,6 +30,7 @@
     'depends': [
         'base',
         'hr',
+        'analytic_structure',
         'document_attachment',
     ],
     'data': [
