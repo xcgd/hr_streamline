@@ -1,0 +1,37 @@
+<openerp>
+    <data>
+
+        <!-- Customize department views. -->
+
+        <!-- Inherit from the department list view. -->
+        <record id="hr_streamline_department_list" model="ir.ui.view">
+            <field name="name">hr_streamline_department_list</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_tree" />
+            <field name="arch" type="xml">
+
+                <!-- Add annalytic fields. -->
+                <xpath expr="." position="inside">
+                    <field name="analytic_dimensions" />
+                </xpath>
+
+            </field>
+        </record>
+
+        <!-- Inherit from the department form view. -->
+        <record id="hr_streamline_department_form" model="ir.ui.view">
+            <field name="name">hr_streamline_department_form</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form" />
+            <field name="arch" type="xml">
+
+                <!-- Add annalytic fields. -->
+                <xpath expr="//group" position="inside">
+                    <field name="analytic_dimensions" />
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
