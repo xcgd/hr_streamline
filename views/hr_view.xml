@@ -16,7 +16,7 @@
                                 <group>                                   
                                      <field name="validation_groups">
                                       <tree string="Validation groups member of" editable="top">
-                    						<field name="name"/>
+                    						<field name="name" readonly="1"/>
                     					</tree>
                     					</field>
                                 </group>
