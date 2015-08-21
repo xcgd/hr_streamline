@@ -109,19 +109,13 @@ class hr_employee_streamline(osv.Model):
             is_purchase_validator,
             readonly=True,
             type='boolean',
+            string="Purchase validator",
             store={
                 'hr.employee': (
                     lambda self, cr, uid, ids, c={}: ids,
                     ['employee_id', 'validation_group_1',
                      'validation_group_2', 'validation_groups'], 10),
             },
-            onchange={
-                'hr.employee': (
-                    lambda self, cr, uid, ids, c={}: ids,
-                    ['employee_id', 'validation_group_1',
-                     'validation_group_2', 'validation_groups'], 10),
-            },
-            string="Purchase validator",
             multi='val',
         ),
     }
