@@ -32,6 +32,7 @@
         'hr',
         'analytic_structure',
         'document_attachment',
+        'purchase',
     ],
     'data': [
         'security/ir.model.access.csv',
