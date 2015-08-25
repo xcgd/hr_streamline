@@ -44,24 +44,6 @@ class hr_employee_streamline(osv.Model):
             return [('id', 'in', tuple(ids))]
         return [('id', '=', '0')]
 
-    def is_purchase_validator(self, cr, uid, ids, field_names, args,
-                              context=None):
-        res = {}
-        pool = self.pool['ir.model.data']
-        l = pool.get_object(cr,
-                            uid,
-                            'purchase',
-                            'group_purchase_manager'
-                            )
-        list_users = l.users
-        m_users = [m.id for m in list_users]
-
-        for employee in self.browse(cr, uid, ids, context=context):
-            res[employee.id] = {
-                    'is_validator': employee.user_id.id in m_users
-                }
-        return res
-
     _columns = {
         'signature': fields.binary(_('Signature')),
         'signature_type': fields.char(_('Signature Type (.png, jpg, ..)')),
@@ -104,19 +86,6 @@ class hr_employee_streamline(osv.Model):
             'employee_id',
             string="Validation groups member of",
             readonly=True,
-        ),
-        'is_validator': fields.function(
-            is_purchase_validator,
-            readonly=True,
-            type='boolean',
-            string="Purchase validator",
-            store={
-                'hr.employee': (
-                    lambda self, cr, uid, ids, c={}: ids,
-                    ['employee_id', 'validation_group_1',
-                     'validation_group_2', 'validation_groups'], 10),
-            },
-            multi='val',
         ),
     }
 
@@ -221,7 +190,6 @@ class hr_vgroups(osv.Model):
             'hr_employee_hr_vgroups_rel',
             'employee_id',
             'vgroup_id',
-            domain=[('is_validator', '!=', False)],
             string="Group members",
         ),
     }
