@@ -40,6 +40,7 @@
         'views/hr_department.xml',
         'views/hr_employee.xml',
         'views/hr_operational_department.xml',
+        'views/hr_view.xml',
 
         'menu.xml',
     ],
