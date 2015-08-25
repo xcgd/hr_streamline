@@ -44,24 +44,6 @@ class hr_employee_streamline(osv.Model):
             return [('id', 'in', tuple(ids))]
         return [('id', '=', '0')]
 
-    def is_purchase_validator(self, cr, uid, ids, field_names, args,
-                              context=None):
-        res = {}
-        pool = self.pool['ir.model.data']
-        l = pool.get_object(cr,
-                            uid,
-                            'purchase',
-                            'group_purchase_manager'
-                            )
-        list_users = l.users
-        m_users = [m.id for m in list_users]
-
-        for employee in self.browse(cr, uid, ids, context=context):
-            res[employee.id] = {
-                    'is_validator': employee.user_id.id in m_users
-                }
-        return res
-
     _columns = {
         'signature': fields.binary(_('Signature')),
         'signature_type': fields.char(_('Signature Type (.png, jpg, ..)')),
@@ -88,35 +70,6 @@ class hr_employee_streamline(osv.Model):
             'res_id', 'doc_id',
             'Administrative documents',
             ondelete="cascade",
-        ),
-        'validation_group_1': fields.many2one(
-            'hr.vgroups',
-            string="Validation group 1",
-        ),
-        'validation_group_2': fields.many2one(
-            'hr.vgroups',
-            string="Validation group 2",
-        ),
-        'validation_groups': fields.many2many(
-            'hr.vgroups',
-            'hr_employee_hr_vgroups_rel',
-            'vgroup_id',
-            'employee_id',
-            string="Validation groups member of",
-            readonly=True,
-        ),
-        'is_validator': fields.function(
-            is_purchase_validator,
-            readonly=True,
-            type='boolean',
-            string="Purchase validator",
-            store={
-                'hr.employee': (
-                    lambda self, cr, uid, ids, c={}: ids,
-                    ['employee_id', 'validation_group_1',
-                     'validation_group_2', 'validation_groups'], 10),
-            },
-            multi='val',
         ),
     }
 
@@ -192,37 +145,4 @@ class hr_employee_streamline(osv.Model):
         self._update_values(values)
         return super(hr_employee_streamline, self).write(cr, uid, ids, values,
                                                          context=context)
-
-
-class hr_vgroups(osv.Model):
-
-    _name = "hr.vgroups"
-
-    _columns = {
-
-        'name': fields.char('Group name', required=True),
-
-        'for_validation_1': fields.one2many(
-            'hr.employee',
-            'validation_group_1',
-            string="For first level validation employees",
-            readonly=True,
-        ),
-
-        'for_validation_2': fields.one2many(
-            'hr.employee',
-            'validation_group_2',
-            string="For second level validation employees",
-            readonly=True,
-        ),
-
-        'members': fields.many2many(
-            'hr.employee',
-            'hr_employee_hr_vgroups_rel',
-            'employee_id',
-            'vgroup_id',
-            domain=[('is_validator', '!=', False)],
-            string="Group members",
-        ),
-    }
 
