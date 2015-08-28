@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Human Employee Streamline',
-    'version': '1.6',
+    'version': '1.7',
     'author': 'XCG Consulting',
     'category': 'Human Resources',
     'description': """Enchancements to the hr module to
