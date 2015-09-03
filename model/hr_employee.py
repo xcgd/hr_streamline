@@ -120,11 +120,6 @@ class hr_employee_streamline(osv.Model):
             string="Is of the same company",
             readonly=True,
             multi='same_company',
-            onchange={
-                'res.users': (
-                    lambda self, cr, uid, ids, c={}: ids,
-                    ['user_id'], 10),
-            },
         ),
     }
 
