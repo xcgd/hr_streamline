@@ -44,33 +44,6 @@ class hr_employee_streamline(osv.Model):
             return [('id', 'in', tuple(ids))]
         return [('id', '=', '0')]
 
-    def is_same_company(
-        self, cr, uid, ids, field_names, args, context=None
-    ):
-        res = {}
-        user_id = self.pool['res.users'].search(
-            cr, uid, [('id', '=', uid)], context=context
-        )
-
-        for user in self.pool['res.users'].browse(
-            cr, uid, user_id, context=context
-        ):
-            company_user = user.company_id
-
-        print user_id
-        print company_user
-
-        for employee in self.browse(cr, uid, ids, context=context):
-            company = employee.department_id.company_id
-
-        print company
-
-        res[employee.id] = {
-            'same_company': (company.id == company_user.id)
-        }
-
-        return res
-
     _columns = {
         'signature': fields.binary(_('Signature')),
         'signature_type': fields.char(_('Signature Type (.png, jpg, ..)')),
@@ -113,13 +86,6 @@ class hr_employee_streamline(osv.Model):
             'employee_id',
             string="Validation groups member of",
             readonly=True,
-        ),
-        'same_company': fields.function(
-            is_same_company,
-            type='boolean',
-            string="Is of the same company",
-            readonly=True,
-            multi='same_company',
         ),
     }
 
@@ -219,20 +185,11 @@ class hr_vgroups(osv.Model):
             readonly=True,
         ),
 
-         'members': fields.many2many(
+        'members': fields.many2many(
             'hr.employee',
             'hr_employee_hr_vgroups_rel',
             'employee_id',
             'vgroup_id',
             string="Group members",
         ),
-
-#         'members': fields.many2many(
-#             'hr.employee',
-#             'hr_employee_hr_vgroups_rel',
-#             'employee_id',
-#             'vgroup_id',
-#             domain=[('same_company', '=', True)],
-#             string="Group members",
-#         ),
     }
