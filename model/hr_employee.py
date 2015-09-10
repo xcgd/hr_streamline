@@ -82,8 +82,8 @@ class hr_employee_streamline(osv.Model):
         'validation_groups': fields.many2many(
             'hr.vgroups',
             'hr_employee_hr_vgroups_rel',
-            'vgroup_id',
             'employee_id',
+            'vgroup_id',
             string="Validation groups member of",
             readonly=True,
         ),
@@ -188,8 +188,8 @@ class hr_vgroups(osv.Model):
         'members': fields.many2many(
             'hr.employee',
             'hr_employee_hr_vgroups_rel',
-            'employee_id',
             'vgroup_id',
+            'employee_id',
             string="Group members",
         ),
     }
